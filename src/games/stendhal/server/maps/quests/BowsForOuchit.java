@@ -204,7 +204,14 @@ ask for horse hair.
 				"Hello, hello! Ouchit needs more horse hairs from my horses? " +
 				"No problem, here you are. Send Ouchit greetings from me.",
 				new EquipItemAction("horse hair"));
-
+		npc.add(ConversationStates.ATTENDING,
+				"horse hair",
+					new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
+								new NotCondition (new PlayerHasItemWithHimCondition("horse hair",1))),
+				ConversationStates.ATTENDING,
+				"Hello, hello! Ouchit needs more horse hairs from my horses? " +
+				"No problem, here you are. Send Ouchit greetings from me.",
+				new EquipItemAction("horse hair"));
 	}
 
 	public void bringHairStep() {
