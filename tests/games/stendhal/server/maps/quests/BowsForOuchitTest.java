@@ -14,7 +14,6 @@ package games.stendhal.server.maps.quests;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static utilities.SpeakerNPCTestHelper.getReply;
@@ -134,6 +133,34 @@ public class BowsForOuchitTest {
 	}
 
 	@Test
+	public void testGetHairshorsehairs() {
+		npc = SingletonRepository.getNPCList().get("Karl");
+		en = npc.getEngine();
+
+		// the state wasn't remembered across the new test method so we need to set it to what it was when we ended the last
+		player.setQuest(QUEST_SLOT, "hair");
+
+		en.step(player, "hi");
+		assertEquals("Heyho! Nice to see you here at our farm.", getReply(npc));
+		en.step(player, "help");
+		assertEquals("You need help? I can tell you a bit about the #neighborhood.", getReply(npc));
+		en.step(player, "neighborhood");
+
+		assertEquals("In the north is a cave with bears and other creatures. If you go to the north-east you will reach after some time the great city Ados. At the east is a biiig rock. Does Balduin still live there? You want to go south-east? Well.. you can reach Ados there too, but I think the way is a bit harder.", getReply(npc));
+		en.step(player, "task");
+		assertEquals("I don't have time for those things, sorry. Working.. working.. working..", getReply(npc));
+
+		en.step(player, "horse hairs");
+		assertEquals("Hello, hello! Ouchit needs more horse hairs from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
+		en.step(player, "bye");
+		assertEquals("Bye bye. Be careful on your way.", getReply(npc));
+
+		// check quest slot and item
+		assertTrue(player.isEquipped("horse hair"));
+		assertEquals(player.getQuest(QUEST_SLOT),"hair");	
+	}
+
+	@Test
 	public void testGetHairs() {
 		npc = SingletonRepository.getNPCList().get("Karl");
 		en = npc.getEngine();
@@ -152,8 +179,8 @@ public class BowsForOuchitTest {
 		assertEquals("I don't have time for those things, sorry. Working.. working.. working..", getReply(npc));
 
 		// he doesn't seem to reply to horse hairs
-		en.step(player, "horse hairs");
-		assertNull(getReply(npc));
+		//en.step(player, "horse hairs");
+		//assertNull(getReply(npc));
 
 		en.step(player, "ouchit");
 		assertEquals("Hello, hello! Ouchit needs more horse hairs from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
@@ -162,9 +189,16 @@ public class BowsForOuchitTest {
 
 		// check quest slot and item
 		assertTrue(player.isEquipped("horse hair"));
-		assertEquals(player.getQuest(QUEST_SLOT),"hair");
+		assertEquals(player.getQuest(QUEST_SLOT),"hair");	
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	@Test
 	public void testBringHairs() {
 		npc = SingletonRepository.getNPCList().get("Ouchit");
