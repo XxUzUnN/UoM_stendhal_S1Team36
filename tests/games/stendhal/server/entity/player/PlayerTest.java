@@ -539,13 +539,17 @@ public class PlayerTest {
 		//assign the sheep to the player
 		player.setSheep(sheep);
 		
-		sheep.setPosition(20,1);
+		sheep.setPosition(1,1);
 		player.setPosition(10,10);
 		player.isZoneChangeAllowed();
 		RPEvent event = player.events().get(0);
 		assertEquals(sheep.getTitle() + " is far away. wait!.",event.get("text"));
 		
+		//make sure that the method is return True if the sheep is near the player
+		sheep.setPosition(1,1);
+		player.setPosition(1,1);
 		
+		assertEquals(true,player.isZoneChangeAllowed());
 	}
 	
 	@Test
@@ -556,21 +560,25 @@ public class PlayerTest {
 		//create the player and add it to the zone
 		Player player = PlayerTestHelper.createPlayer("test dummy");
 		zone.add(player);
-		//create the sheep and add it to the zone
+		//create the cat and add it to the zone
 		Cat cat =new Cat();
 		zone.add(cat);
 		
 		
-		//assign the sheep to the player
+		//assign the cat to the player
 		player.setPet(cat);
 		
-		cat.setPosition(20,1);
+		cat.setPosition(1,1);
 		player.setPosition(10,10);
 		player.isZoneChangeAllowed();
 		RPEvent event = player.events().get(0);
 		assertEquals(cat.getTitle() + " is far away. wait!.",event.get("text"));
 		
+		//make sure that the method is return True if the cat is near the player
+		cat.setPosition(1,1);
+		player.setPosition(1,1);
 		
+		assertEquals(true,player.isZoneChangeAllowed());
 	}
 	
 	@Test
@@ -581,21 +589,25 @@ public class PlayerTest {
 		//create the player and add it to the zone
 		Player player = PlayerTestHelper.createPlayer("test dummy");
 		zone.add(player);
-		//create the sheep and add it to the zone
+		//create the purple dragon and add it to the zone
 		PurpleDragon purple =new PurpleDragon();
 		zone.add(purple);
 		
 		
-		//assign the sheep to the player
+		//assign the purple dragon to the player
 		player.setPet(purple);
 		
-		purple.setPosition(20,1);
+		purple.setPosition(1,1);
 		player.setPosition(10,10);
 		player.isZoneChangeAllowed();
 		RPEvent event = player.events().get(0);
 		assertEquals(purple.getTitle() + " is far away. wait!.",event.get("text"));
 		
+		//make sure that the method is return True if the purple dragon is near the player
+		purple.setPosition(1,1);
+		player.setPosition(1,1);
 		
+		assertEquals(true,player.isZoneChangeAllowed());
 	}
 	
 	@Test
@@ -606,21 +618,25 @@ public class PlayerTest {
 		//create the player and add it to the zone
 		Player player = PlayerTestHelper.createPlayer("test dummy");
 		zone.add(player);
-		//create the sheep and add it to the zone
+		//create the baby dragon and add it to the zone
 		BabyDragon baby =new BabyDragon();
 		zone.add(baby);
 		
 		
-		//assign the sheep to the player
+		//assign the baby dragon to the player
 		player.setPet(baby);
 		
-		baby.setPosition(20,1);
+		baby.setPosition(1,1);
 		player.setPosition(10,10);
 		player.isZoneChangeAllowed();
 		RPEvent event = player.events().get(0);
 		assertEquals(baby.getTitle() + " is far away. wait!.",event.get("text"));
 		
+		//make sure that the method is return True if the baby dragon is near the player
+		baby.setPosition(1,1);
+		player.setPosition(1,1);
 		
+		assertEquals(true,player.isZoneChangeAllowed());
 	}
 	
 }
