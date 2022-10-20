@@ -1692,10 +1692,10 @@ public class Player extends DressedEntity implements UseListener {
 				return false;
 			}
 		}
-
+		
 		return true;
 	}
-
+	
 	//
 	// Entity
 	//

@@ -21,7 +21,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -34,10 +34,12 @@ import games.stendhal.common.constants.Nature;
 import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.Outfit;
+import games.stendhal.server.entity.creature.Sheep;
 import games.stendhal.server.entity.item.Item;
 import games.stendhal.server.entity.status.StatusType;
 import games.stendhal.server.maps.MockStendhalRPRuleProcessor;
 import games.stendhal.server.maps.MockStendlRPWorld;
+import marauroa.common.game.RPEvent;
 import marauroa.common.game.RPObject;
 import marauroa.server.game.db.DatabaseFactory;
 import utilities.PlayerTestHelper;
@@ -516,5 +518,28 @@ public class PlayerTest {
 		player.setSkill(Nature.LIGHT.toString()+"_xp", "blah");
 		int magicSkillXpLater = player.getMagicSkillXp(Nature.LIGHT);
 		assertThat(magicSkillXpLater, is(0));
+	}
+	
+	@Test
+	public void testIsZoneChangeAllowed()
+	{	//create the zone
+		final StendhalRPZone zone = new StendhalRPZone("test zone",100000,100000);
+		MockStendlRPWorld.get().addRPZone(zone);
+		//create the player and add it to the zone
+		Player player = PlayerTestHelper.createPlayer("test dummy");
+		zone.add(player);
+		//create the sheep and add it to the zone
+		Sheep sheep =new Sheep();
+		zone.add(sheep);
+		//assign the sheep to the player
+		player.setSheep(sheep);
+		
+		sheep.setPosition(20,1);
+		player.setPosition(10,10);
+		player.isZoneChangeAllowed();
+		RPEvent event = player.events().get(0);
+		assertEquals(sheep.getTitle() + " is far away. wait!.",event.get("text"));
+		
+		
 	}
 }
