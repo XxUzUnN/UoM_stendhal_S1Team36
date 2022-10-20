@@ -1681,6 +1681,7 @@ public class Player extends DressedEntity implements UseListener {
 
 		if (sheep != null) {
 			if (squaredDistance(sheep) > 7 * 7) {
+				this.sendPrivateText(NotificationType.NEGATIVE,sheep.getTitle() + " is far away. wait!.");
 				return false;
 			}
 		}
@@ -1696,6 +1697,8 @@ public class Player extends DressedEntity implements UseListener {
 		return true;
 	}
 	
+	
+
 	//
 	// Entity
 	//
