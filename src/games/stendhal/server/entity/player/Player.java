@@ -1690,6 +1690,7 @@ public class Player extends DressedEntity implements UseListener {
 
 		if (pet != null) {
 			if (squaredDistance(pet) > 7 * 7) {
+				this.sendPrivateText(NotificationType.NEGATIVE,pet.getTitle() + " is far away. wait!.");
 				return false;
 			}
 		}
