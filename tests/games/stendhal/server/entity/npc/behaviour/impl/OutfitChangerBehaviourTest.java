@@ -147,6 +147,9 @@ public class OutfitChangerBehaviourTest {
 		npc.getEngine().step(player, "borrow swimsuit");
 		assertEquals("There is more than one swimsuit. Please specify which sort of swimsuit you want to buy.", getReply(npc));
 
+		npc.getEngine().step(player, "borrow");
+		assertEquals("Please tell me what you want to borrow.", getReply(npc));
+
 		npc.getEngine().step(player, "buy anything-else");
 		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
 	}
@@ -183,6 +186,9 @@ public class OutfitChangerBehaviourTest {
 
 		npc.getEngine().step(player, "borrow trunks");
 		assertEquals("There is more than one trunks. Please specify which sort of trunks you want to buy.", getReply(npc));
+
+		npc.getEngine().step(player, "borrow");
+		assertEquals("Please tell me what you want to borrow.", getReply(npc));
 
 		npc.getEngine().step(player, "buy anything-else");
 		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
