@@ -47,16 +47,16 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 		// One of these outfit will be chosen randomly.
 
 		// swimsuits for men
-		outfitTypes.put("trunks1", new Outfit("dress=995"));
-		outfitTypes.put("trunks2", new Outfit("dress=996"));
-		outfitTypes.put("trunks3", new Outfit("dress=997"));
-		outfitTypes.put("trunks4", new Outfit("dress=998"));
+		outfitTypes.put("black trunks", new Outfit("dress=995"));
+		outfitTypes.put("blue trunks", new Outfit("dress=996"));
+		outfitTypes.put("green trunks", new Outfit("dress=997"));
+		outfitTypes.put("yellow trunks", new Outfit("dress=998"));
 
 		// swimsuits for women
-		outfitTypes.put("swimsuit1", new Outfit("dress=991"));
-		outfitTypes.put("swimsuit2", new Outfit("dress=992"));
-		outfitTypes.put("swimsuit3", new Outfit("dress=993"));
-		outfitTypes.put("swimsuit4", new Outfit("dress=994"));
+		outfitTypes.put("pink swimsuit", new Outfit("dress=991"));
+		outfitTypes.put("cyan swimsuit", new Outfit("dress=992"));
+		outfitTypes.put("yellow swimsuit", new Outfit("dress=993"));
+		outfitTypes.put("red swimsuit", new Outfit("dress=994"));
 
 		// hair & hat are set to "-1" so that they are not drawn over the mask
 		outfitTypes.put("bear mask", new Outfit("mask=994,hair=-1,hat=-1"));
