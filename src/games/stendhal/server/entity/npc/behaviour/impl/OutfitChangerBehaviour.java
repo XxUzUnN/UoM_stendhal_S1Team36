@@ -275,6 +275,14 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random mask");
 			newOutfit = Rand.rand(possibleNewOutfits);
 		}
+		else if (outfitType.equals("random swimsuit")) {
+			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random swimsuit");
+			newOutfit = Rand.rand(possibleNewOutfits);
+		}
+		else if (outfitType.equals("random trunks")) {
+			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random trunks");
+			newOutfit = Rand.rand(possibleNewOutfits);
+		}
 		else {
 			newOutfit = outfitTypes.get(outfitType);
 		}
