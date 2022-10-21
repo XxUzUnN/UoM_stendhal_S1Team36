@@ -60,6 +60,7 @@ import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.Killer;
 import games.stendhal.server.entity.Outfit;
 import games.stendhal.server.entity.RPEntity;
+
 import games.stendhal.server.entity.creature.DomesticAnimal;
 import games.stendhal.server.entity.creature.Pet;
 import games.stendhal.server.entity.creature.Sheep;
@@ -71,13 +72,16 @@ import games.stendhal.server.entity.slot.Slots;
 import games.stendhal.server.entity.status.StatusType;
 import games.stendhal.server.events.PrivateTextEvent;
 import games.stendhal.server.events.SoundEvent;
+
 import marauroa.common.game.RPEvent;
 import marauroa.common.game.RPObject;
 import marauroa.common.game.RPSlot;
 import marauroa.common.game.SyntaxException;
+//import utilities.PlayerTestHelper;
 
 public class Player extends DressedEntity implements UseListener {
 
+	
 	private static final String LAST_PLAYER_KILL_TIME = "last_player_kill_time";
 
 	/** the logger instance. */
@@ -1137,6 +1141,8 @@ public class Player extends DressedEntity implements UseListener {
 	 */
 	public void setSheep(final Sheep sheep) {
 		getPetOwner().setSheep(sheep);
+		
+		
 	}
 
 	/**
@@ -1697,7 +1703,6 @@ public class Player extends DressedEntity implements UseListener {
 		
 		return true;
 	}
-	
 	
 
 	//
@@ -2921,4 +2926,5 @@ public class Player extends DressedEntity implements UseListener {
 		String[] values = value.split(" ");
 		return Integer.parseInt(values[0]) * Integer.parseInt(values[1]);
 	}
+	
 }
