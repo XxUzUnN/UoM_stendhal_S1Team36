@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import games.stendhal.server.entity.npc.SpeakerNPC;
-import games.stendhal.server.entity.npc.behaviour.adder.SellerAdder;
+import games.stendhal.server.entity.npc.behaviour.adder.OutfitChangerAdder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -85,10 +85,10 @@ public class OutfitChangerBehaviourTest {
 		pricelist.put("dog mask", 20);
 		pricelist.put("squirrel mask", 20);
 		pricelist.put("random mask", 20);
-		final SellerBehaviour sb = new SellerBehaviour(pricelist);
+		final OutfitChangerBehaviour ocb = new OutfitChangerBehaviour(pricelist);
 		final SpeakerNPC npc = new SpeakerNPC("npc");
 		npc.addGreeting("Hi, there. Do you need #help with anything?");
-		new SellerAdder().addSeller(npc, sb);
+		new OutfitChangerAdder().addOutfitChanger(npc, ocb, "buy");
 		final Player player = PlayerTestHelper.createPlayer("bob");
 
 		npc.getEngine().step(player, "hi");
@@ -111,7 +111,7 @@ public class OutfitChangerBehaviourTest {
 		assertEquals("Please tell me what you want to buy.", getReply(npc));
 
 		npc.getEngine().step(player, "buy anything-else");
-		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
+		assertEquals("Sorry, I don't offer anything-elses.", getReply(npc));
 	}
 
 	/**
@@ -125,10 +125,10 @@ public class OutfitChangerBehaviourTest {
 		pricelist.put("yellow swimsuit", 5);
 		pricelist.put("red swimsuit", 5);
 		pricelist.put("random swimsuit", 5);
-		final SellerBehaviour sb = new SellerBehaviour(pricelist);
+		final OutfitChangerBehaviour ocb = new OutfitChangerBehaviour(pricelist);
 		final SpeakerNPC npc = new SpeakerNPC("npc");
 		npc.addGreeting("Hallo!");
-		new SellerAdder().addSeller(npc, sb);
+		new OutfitChangerAdder().addOutfitChanger(npc, ocb, "borrow");
 		final Player player = PlayerTestHelper.createPlayer("bob");
 
 		npc.getEngine().step(player, "hi");
@@ -144,14 +144,11 @@ public class OutfitChangerBehaviourTest {
 		npc.getEngine().step(player, "no");
 		assertEquals("Ok, how else may I help you?", getReply(npc));
 
-		npc.getEngine().step(player, "borrow swimsuit");
-		assertEquals("There is more than one swimsuit. Please specify which sort of swimsuit you want to buy.", getReply(npc));
-
 		npc.getEngine().step(player, "borrow");
 		assertEquals("Please tell me what you want to borrow.", getReply(npc));
 
-		npc.getEngine().step(player, "buy anything-else");
-		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
+		npc.getEngine().step(player, "borrow anything-else");
+		assertEquals("Sorry, I don't offer anything-elses.", getReply(npc));
 	}
 
 	/**
@@ -165,33 +162,30 @@ public class OutfitChangerBehaviourTest {
 		pricelist.put("green trunks", 5);
 		pricelist.put("yellow trunks", 5);
 		pricelist.put("random trunks", 5);
-		final SellerBehaviour sb = new SellerBehaviour(pricelist);
+		final OutfitChangerBehaviour ocb = new OutfitChangerBehaviour(pricelist);
 		final SpeakerNPC npc = new SpeakerNPC("npc");
 		npc.addGreeting("Hallo!");
-		new SellerAdder().addSeller(npc, sb);
+		new OutfitChangerAdder().addOutfitChanger(npc, ocb, "borrow");
 		final Player player = PlayerTestHelper.createPlayer("bob");
 
 		npc.getEngine().step(player, "hi");
 		assertEquals("Hallo!", getReply(npc));
 
-		npc.getEngine().step(player, "borrow a random trunks");
+		npc.getEngine().step(player, "borrow a random trunk");
 		assertEquals("To borrow a random trunks will cost 5. Do you want to borrow it?", getReply(npc));
 		npc.getEngine().step(player, "no");
 		assertEquals("Ok, how else may I help you?", getReply(npc));
 
-		npc.getEngine().step(player, "borrow a black trunks");
+		npc.getEngine().step(player, "borrow a black trunk");
 		assertEquals("To borrow a black trunks will cost 5. Do you want to borrow it?", getReply(npc));
 		npc.getEngine().step(player, "no");
 		assertEquals("Ok, how else may I help you?", getReply(npc));
 
-		npc.getEngine().step(player, "borrow trunks");
-		assertEquals("There is more than one trunks. Please specify which sort of trunks you want to buy.", getReply(npc));
-
 		npc.getEngine().step(player, "borrow");
 		assertEquals("Please tell me what you want to borrow.", getReply(npc));
 
-		npc.getEngine().step(player, "buy anything-else");
-		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
+		npc.getEngine().step(player, "borrow anything-else");
+		assertEquals("Sorry, I don't offer anything-elses.", getReply(npc));
 	}
 
 }
