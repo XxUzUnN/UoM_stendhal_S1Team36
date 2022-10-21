@@ -300,10 +300,7 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 	 */
 	public boolean wearsOutfitFromHere(final Player player) {
 		final Outfit currentOutfit = player.getOutfit();
-		System.out.println("current outfit: " + currentOutfit);
-
 		for (final String outfitType : priceCalculator.dealtItems()) {
-			System.out.println("outfit type: " + outfitType);
 			if (outfitType.equals("random mask")) {
 				if (currentOutfit.toString().contains(RandomoutfitTypes.get(outfitType).toString())) {
 					return true;
