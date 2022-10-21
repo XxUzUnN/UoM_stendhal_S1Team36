@@ -80,6 +80,7 @@ public class MakeupArtistNPC implements ZoneConfigurator {
 				priceList.put("monkey mask", 20);
 				priceList.put("dog mask", 20);
 				priceList.put("squirrel mask", 20);
+				priceList.put("random mask", 20);
 				final OutfitChangerBehaviour behaviour = new OutfitChangerBehaviour(priceList, MINUTES_BEFORE_WEAR_OFF, "Your mask has worn off.");
 				new OutfitChangerAdder().addOutfitChanger(this, behaviour, "buy");
 			}
