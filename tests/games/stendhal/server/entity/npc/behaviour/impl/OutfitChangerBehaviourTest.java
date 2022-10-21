@@ -107,6 +107,9 @@ public class OutfitChangerBehaviourTest {
 		npc.getEngine().step(player, "buy mask");
 		assertEquals("There is more than one mask. Please specify which sort of mask you want to buy.", getReply(npc));
 
+		npc.getEngine().step(player, "buy");
+		assertEquals("Please tell me what you want to buy.", getReply(npc));
+
 		npc.getEngine().step(player, "buy anything-else");
 		assertEquals("Sorry, I don't sell anything-elses.", getReply(npc));
 	}
