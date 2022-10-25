@@ -232,7 +232,9 @@ public class FruitsForCoralia extends AbstractQuest {
 			// to fix bug [ 2517439 ]
 			player.addKarma(-5.0);
 			return;
-		} else {
+		} 
+		// edited part 
+		else {
 			// you get less XP if you did it the lazy way
 			// and no karma
 			player.addXP(30);
