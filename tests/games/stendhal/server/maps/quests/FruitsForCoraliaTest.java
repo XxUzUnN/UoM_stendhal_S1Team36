@@ -137,8 +137,8 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("That's wonderful! I'd like these fresh fruits: 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon.", getReply(npc));
-
+		assertEquals("That's wonderful! I'd like these fresh fruits: 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. or #everything", getReply(npc));
+		en.step(player, "everything");
 		// -----------------------------------------------
 
 		en.step(player, "apples");
@@ -156,6 +156,30 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 		assertEquals("Bye.", getReply(npc));
 
 		// -----------------------------------------------
+		PlayerTestHelper.equipWithStackableItem(player, "apple", 4);
+		PlayerTestHelper.equipWithStackableItem(player, "banana", 5);
+		PlayerTestHelper.equipWithStackableItem(player, "cherry", 9);
+		PlayerTestHelper.equipWithStackableItem(player, "grapes", 2);
+		PlayerTestHelper.equipWithStackableItem(player, "pear", 4);
+		PlayerTestHelper.equipWithStackableItem(player, "watermelon", 1);
+		PlayerTestHelper.equipWithStackableItem(player, "pomegranate", 2);
+		
+		en.step(player, "hi");
+
+//		assertEquals("Welcome back! I hope you collected some #ingredients for the hat, or #everything.", getReply(npc));
+		
+		en.step(player, "everything");
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		PlayerTestHelper.equipWithStackableItem(player, "apple", 4);
 

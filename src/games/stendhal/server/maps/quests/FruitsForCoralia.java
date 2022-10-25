@@ -1,13 +1,17 @@
 package games.stendhal.server.maps.quests;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import games.stendhal.common.grammar.Grammar;
+import games.stendhal.common.parser.Sentence;
 import games.stendhal.server.entity.npc.ChatAction;
 import games.stendhal.server.entity.npc.ConversationPhrases;
 import games.stendhal.server.entity.npc.ConversationStates;
+import games.stendhal.server.entity.npc.EventRaiser;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.action.CollectRequestedItemsAction;
 import games.stendhal.server.entity.npc.action.EquipRandomAmountOfItemAction;
@@ -32,6 +36,7 @@ import games.stendhal.server.entity.npc.condition.TimePassedCondition;
 import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.maps.Region;
 import games.stendhal.server.util.ItemCollection;
+
 
 /**
  * QUEST: Fruits for Coralia
@@ -72,7 +77,9 @@ public class FruitsForCoralia extends AbstractQuest {
 	 * left them default here, but in the JUnit test
 	 * called reward item "REWARD" temporarily
 	 */
-
+	private static final List<String> NEEDED_FRUITS = Arrays.asList("apple",
+			"banana", "cherry", "grapes", "pear", "watermelon", "pomegranate");
+	private static final int[] AMOUNT = {4,5,9,2,4,1,2};
     public static final String QUEST_SLOT = "fruits_coralia";
 
     /**
@@ -84,7 +91,62 @@ public class FruitsForCoralia extends AbstractQuest {
     /**
 	 * Required items for the quest.
 	 */
+//	public String getSlotName() {
+//		return QUEST_SLOT;
+//	}
 	protected static final String NEEDED_ITEMS = "apple=4;banana=5;cherry=9;grapes=2;pear=4;watermelon=1;pomegranate=2";
+	//new method
+	private List<String> missingFruits(final Player player, final boolean hash) {
+		final List<String> result = new LinkedList<String>();
+
+		String doneText = player.getQuest(QUEST_SLOT);
+		if (doneText == null) {
+			doneText = "";
+		}
+		final List<String> done = Arrays.asList(doneText.split(";"));
+		for (String ingredient : NEEDED_FRUITS) {
+			if (!done.contains(ingredient)) {
+				if (hash) {
+					ingredient = "#" + ingredient;
+				}
+				result.add(ingredient);
+			}
+		}
+		return result;
+	}
+	//new method
+//	private void checkForAllIngredients(final Player player, final EventRaiser npc) {
+//		List<String> missing = missingFruits(player, false);
+//		for (final String fruit : missing) {
+//		if (player.drop(fruit)) {
+//			// register ingredient as done
+//			final String doneText = player.getQuest(QUEST_SLOT);
+//			player.setQuest(QUEST_SLOT, doneText + ";"
+//			+ fruit);
+//			}
+//		}
+//		// check if the player has brought all Food
+//		missing = missingFruits(player, true);
+//		if (missing.size() > 0) {
+//			npc.say("You didn't have all the ingredients I need. I still need "
+//							+ Grammar.quantityplnoun(missing.size(),
+//									"ingredient", "one") + ": "
+//							+ Grammar.enumerateCollection(missing);
+//						
+//			return;
+//		} else {
+//			// you get less XP if you did it the lazy way
+//			// and no karm
+//			player.getStatusList().removeAll(PoisonStatus.class);
+//			npc.say(" Tell me if I can help you with anything else.");
+//			player.setQuest(QUEST_SLOT, "done;"
+//					+ System.currentTimeMillis());
+//			player.notifyWorldAboutChanges();
+//			npc.setCurrentState(ConversationStates.ATTENDING);
+//		}
+//	}
+//	
+
 
     @Override
     public void addToWorld() {
@@ -94,6 +156,7 @@ public class FruitsForCoralia extends AbstractQuest {
         prepareQuestStep();
         prepareBringingStep();
     }
+    
 
     @Override
     public String getSlotName() {
@@ -148,7 +211,28 @@ public class FruitsForCoralia extends AbstractQuest {
 		}
 		return res;
 	}
-
+ 	private void checkForAllIngredients(final Player player, final EventRaiser npc) {
+		List<String> missing = missingFruits(player, false);
+		for (final String food : missing) {
+		if (player.drop(food)) {
+			// register ingredient as done
+			final String doneText = player.getQuest(QUEST_SLOT);
+			player.setQuest(QUEST_SLOT, doneText + ";"
+			+ food);
+			}
+		}
+		// check if the player has brought all Food
+		missing = missingFruits(player, true);
+		if (missing.size() > 0) {
+			npc.say("You didn't have all the ingredients I need. I still need "
+							+ Grammar.quantityplnoun(missing.size(),
+									"ingredient", "one") + ": "
+							+ Grammar.enumerateCollection(missing)
+							+ ". You'll get bad karma if you keep making mistakes like that!");
+			// to fix bug [ 2517439 ]
+			player.addKarma(-5.0);
+			return;}
+		}
     public void prepareQuestStep() {
     	SpeakerNPC npc = npcs.get("Coralia");
 
@@ -214,7 +298,7 @@ public class FruitsForCoralia extends AbstractQuest {
     		null,
 			new MultipleActions(
 				new SetQuestAndModifyKarmaAction(QUEST_SLOT, NEEDED_ITEMS, 1.0),
-				new SayRequiredItemsFromCollectionAction(QUEST_SLOT, "That's wonderful! I'd like these fresh fruits: [items].")));
+				new SayRequiredItemsFromCollectionAction(QUEST_SLOT, "That's wonderful! I'd like these fresh fruits: [items]. or #everything")));
 
     	// reject quest response
     	npc.add(ConversationStates.QUEST_OFFERED,
@@ -285,8 +369,18 @@ public class FruitsForCoralia extends AbstractQuest {
             ConversationStates.QUESTION_1,
             "I've never seen pomegranate trees growing wild, but I heard of a man living south of the great river cultivating them in his garden.",
             null);
-    }
-
+    	//new
+		npc.add(ConversationStates.QUESTION_1, "everything",
+				null,
+				ConversationStates.QUESTION_1,
+				null,
+				new ChatAction() {
+			    @Override
+				public void fire(final Player player, final Sentence sentence,
+					   final EventRaiser npc) {
+			    	checkForAllIngredients(player, npc);
+			}
+		});}
 
     private void prepareBringingStep() {
 		final SpeakerNPC npc = npcs.get("Coralia");
@@ -340,6 +434,17 @@ public class FruitsForCoralia extends AbstractQuest {
     				"Wonderful! Did you bring anything else with you?", "I already have enough of those.",
     				completeAction,
     				ConversationStates.ATTENDING));
+    		npc.add(ConversationStates.QUESTION_2, "everything",
+    				null,
+    				ConversationStates.QUESTION_2,
+    				null,
+    				new ChatAction() {
+    			    @Override
+    				public void fire(final Player player, final Sentence sentence,
+    					   final EventRaiser npc) {
+    			    	checkForAllIngredients(player, npc);
+    			}
+    		});
     	}
     }
 
