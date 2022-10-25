@@ -231,8 +231,23 @@ public class FruitsForCoralia extends AbstractQuest {
 							+ ". You'll get bad karma if you keep making mistakes like that!");
 			// to fix bug [ 2517439 ]
 			player.addKarma(-5.0);
-			return;}
+			return;
+		} else {
+			// you get less XP if you did it the lazy way
+			// and no karma
+			player.addXP(30);
+			for (int i =0; i< NEEDED_FRUITS.size();i++) {
+				for(int j=1;j<AMOUNT[i];j++) {
+				player.drop(NEEDED_FRUITS.get(i));
+			}}
+			npc.say("THANK YOU!! My hat now looks fresh again");
+			player.setQuest(QUEST_SLOT, "done;"
+					+ System.currentTimeMillis());
+			player.notifyWorldAboutChanges();
+			npc.setCurrentState(ConversationStates.ATTENDING);
 		}
+	}
+
     public void prepareQuestStep() {
     	SpeakerNPC npc = npcs.get("Coralia");
 
