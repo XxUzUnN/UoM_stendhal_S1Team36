@@ -155,6 +155,7 @@ public class BowsForOuchitTest {
 		en.step(player, "bye");
 		assertEquals("Bye bye. Be careful on your way.", getReply(npc));
 
+		
 		// check quest slot and item
 		assertTrue(player.isEquipped("horse hair"));
 		assertEquals(player.getQuest(QUEST_SLOT),"hair");	
