@@ -60,7 +60,11 @@ public class LifeguardNPC implements ZoneConfigurator {
 				addGoodbye("Have fun!");
 
 				final Map<String, Integer> priceList = new HashMap<String, Integer>();
-				priceList.put("swimsuit", 5);
+				priceList.put("pink swimsuit", 5);
+				priceList.put("cyan swimsuit", 5);
+				priceList.put("yellow swimsuit", 5);
+				priceList.put("red swimsuit", 5);
+				priceList.put("random swimsuit", 5);
 				final OutfitChangerBehaviour behaviour = new OutfitChangerBehaviour(priceList);
 				new OutfitChangerAdder().addOutfitChanger(this, behaviour, "borrow");
 

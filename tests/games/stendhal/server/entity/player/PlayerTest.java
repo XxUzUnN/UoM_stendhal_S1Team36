@@ -21,7 +21,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -30,14 +32,24 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import games.stendhal.common.KeyedSlotUtil;
+
+//import games.stendhal.common.NotificationType;
 import games.stendhal.common.constants.Nature;
 import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.Outfit;
+import games.stendhal.server.entity.creature.BabyDragon;
+import games.stendhal.server.entity.creature.Cat;
+import games.stendhal.server.entity.creature.Pet;
+
+import games.stendhal.server.entity.creature.PurpleDragon;
+import games.stendhal.server.entity.creature.Sheep;
 import games.stendhal.server.entity.item.Item;
+//import games.stendhal.server.entity.npc.NPC;
 import games.stendhal.server.entity.status.StatusType;
 import games.stendhal.server.maps.MockStendhalRPRuleProcessor;
 import games.stendhal.server.maps.MockStendlRPWorld;
+import marauroa.common.game.RPEvent;
 import marauroa.common.game.RPObject;
 import marauroa.server.game.db.DatabaseFactory;
 import utilities.PlayerTestHelper;
@@ -517,4 +529,75 @@ public class PlayerTest {
 		int magicSkillXpLater = player.getMagicSkillXp(Nature.LIGHT);
 		assertThat(magicSkillXpLater, is(0));
 	}
+	
+	@Test
+	public void testIsZoneChangeAllowedSheep()
+	{	//create the zone and add it to the world
+		zone = new StendhalRPZone("test zone",100000,100000);
+		MockStendlRPWorld.get().addRPZone(zone);
+		//create the player and add it to the zone
+		Player player = PlayerTestHelper.createPlayer("test dummy");
+		zone.add(player);	
+		
+		//create the sheep and add it to the zone
+		Sheep sheep =new Sheep();
+		zone.add(sheep);
+		//assign the sheep to the player
+		player.setSheep(sheep);
+		
+		sheep.setPosition(1,1);
+		player.setPosition(10, 10);
+		
+		
+		player.isZoneChangeAllowed();
+		RPEvent event = player.events().get(0);
+		assertEquals(sheep.getTitle() + " is far away. wait!.",event.get("text"));
+		
+		//make sure that the method is return True if the sheep is near the player
+		sheep.setPosition(1,1);
+		player.setPosition(1,1);
+		
+		assertEquals(true,player.isZoneChangeAllowed());
+	}
+	
+	@Test
+	public void testIsZoneChangeAllowedPet()
+	{	//create the zone and add it to the world
+		final StendhalRPZone zone = new StendhalRPZone("test zone",100000,100000);
+		MockStendlRPWorld.get().addRPZone(zone);
+		//create the player and add it to the zone
+		Player player = PlayerTestHelper.createPlayer("test dummy");
+		zone.add(player);
+		//make sure that the feature is working with all pets
+		ArrayList<Pet> pets=new ArrayList <>() ;
+		pets.add(new Cat());
+		pets.add(new BabyDragon());
+		pets.add(new PurpleDragon());
+		for(int i=0;i<pets.size();i++)
+		{
+			// add the pet to the zone
+			zone.add(pets.get(i));
+			
+			//assign the pet to the player
+			player.setPet(pets.get(i));
+			
+			//set the position for both pet and the player to make them far away from each other
+			pets.get(i).setPosition(1,1);
+			player.setPosition(10,10);
+			
+			//test the method
+			player.isZoneChangeAllowed();
+			RPEvent event = player.events().get(i);
+			assertEquals(pets.get(i).getTitle() + " is far away. wait!.",event.get("text"));
+			
+			//make sure that the method is return True if the pet is near the player
+			pets.get(i).setPosition(1,1);
+			player.setPosition(1,1);
+			
+			assertEquals(true,player.isZoneChangeAllowed());
+		}
+		
+	}
+
+	
 }

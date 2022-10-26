@@ -40,27 +40,62 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 	protected boolean resetBeforeChange = false;
 
 	// all available outfit types are predefined here.
-	private static Map<String, List<Outfit>> outfitTypes = new HashMap<String, List<Outfit>>();
+	private static Map<String, Outfit> outfitTypes = new HashMap<String, Outfit>();
 	static {
 		// In each line, there is one possible outfit of this
 		// outfit type, in the order: hair, head, dress, base.
 		// One of these outfit will be chosen randomly.
 
 		// swimsuits for men
-		outfitTypes.put("trunks", Arrays.asList(
+		outfitTypes.put("black trunks", new Outfit("dress=995"));
+		outfitTypes.put("blue trunks", new Outfit("dress=996"));
+		outfitTypes.put("green trunks", new Outfit("dress=997"));
+		outfitTypes.put("yellow trunks", new Outfit("dress=998"));
+
+		// swimsuits for women
+		outfitTypes.put("pink swimsuit", new Outfit("dress=991"));
+		outfitTypes.put("cyan swimsuit", new Outfit("dress=992"));
+		outfitTypes.put("yellow swimsuit", new Outfit("dress=993"));
+		outfitTypes.put("red swimsuit", new Outfit("dress=994"));
+
+		// hair & hat are set to "-1" so that they are not drawn over the mask
+		outfitTypes.put("bear mask", new Outfit("mask=994,hair=-1,hat=-1"));
+		outfitTypes.put("frog mask", new Outfit("mask=995,hair=-1,hat=-1"));
+		outfitTypes.put("penguin mask", new Outfit("mask=996,hair=-1,hat=-1"));
+		outfitTypes.put("monkey mask", new Outfit("mask=997,hair=-1,hat=-1"));
+		outfitTypes.put("dog mask", new Outfit("mask=998,hair=-1,hat=-1"));
+		outfitTypes.put("squirrel mask", new Outfit("mask=999,hair=-1,hat=-1"));
+
+		// wedding dress for brides
+		// it seems this must be an array as list even though it's only one item
+		outfitTypes.put("gown", new Outfit("dress=988,hat=991"));
+
+		// // wedding suit for grooms
+		// it seems this must be an array as list even though it's only one item
+		outfitTypes.put("suit", new Outfit("dress=987"));
+	}
+
+	private static Map<String, List<Outfit>> RandomoutfitTypes = new HashMap<String, List<Outfit>>();
+	static {
+		// In each line, there is one possible outfit of this
+		// outfit type, in the order: hair, head, dress, base.
+		// One of these outfit will be chosen randomly.
+
+		// swimsuits for men
+		RandomoutfitTypes.put("random trunks", Arrays.asList(
 				new Outfit("dress=995"),
 				new Outfit("dress=996"),
 				new Outfit("dress=997"),
 				new Outfit("dress=998")));
 
 		// swimsuits for women
-		outfitTypes.put("swimsuit", Arrays.asList(
+		RandomoutfitTypes.put("random swimsuit", Arrays.asList(
 				new Outfit("dress=991"),
 				new Outfit("dress=992"),
 				new Outfit("dress=993"),
 				new Outfit("dress=994")));
 
-		outfitTypes.put("mask", Arrays.asList(
+		RandomoutfitTypes.put("random mask", Arrays.asList(
 				// hair & hat are set to "-1" so that they are not drawn over the mask
 				new Outfit("mask=994,hair=-1,hat=-1"),
 				new Outfit("mask=995,hair=-1,hat=-1"),
@@ -71,11 +106,11 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 
 		// wedding dress for brides
 		// it seems this must be an array as list even though it's only one item
-		outfitTypes.put("gown", Arrays.asList(new Outfit("dress=988,hat=991")));
+		RandomoutfitTypes.put("gown", Arrays.asList(new Outfit("dress=988,hat=991")));
 
 		// // wedding suit for grooms
 		// it seems this must be an array as list even though it's only one item
-		outfitTypes.put("suit", Arrays.asList(new Outfit("dress=987")));
+		RandomoutfitTypes.put("suit", Arrays.asList(new Outfit("dress=987")));
 	}
 
 	/**
@@ -235,9 +270,22 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 			// cannot use OutfitChangerBehaviour.returnToOriginalOutfit(player) as it checks if the outfit was rented from here
 			player.returnToOriginalOutfit();
 		}
-
-		final List<Outfit> possibleNewOutfits = outfitTypes.get(outfitType);
-		final Outfit newOutfit = Rand.rand(possibleNewOutfits);
+		final Outfit newOutfit;
+		if (outfitType.equals("random mask")) {
+			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random mask");
+			newOutfit = Rand.rand(possibleNewOutfits);
+		}
+		else if (outfitType.equals("random swimsuit")) {
+			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random swimsuit");
+			newOutfit = Rand.rand(possibleNewOutfits);
+		}
+		else if (outfitType.equals("random trunks")) {
+			final List<Outfit> possibleNewOutfits = RandomoutfitTypes.get("random trunks");
+			newOutfit = Rand.rand(possibleNewOutfits);
+		}
+		else {
+			newOutfit = outfitTypes.get(outfitType);
+		}
 		player.setOutfit(newOutfit.putOver(player.getOutfit()), true);
 		player.registerOutfitExpireTime(endurance);
 	}
@@ -252,13 +300,24 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 	 */
 	public boolean wearsOutfitFromHere(final Player player) {
 		final Outfit currentOutfit = player.getOutfit();
-
 		for (final String outfitType : priceCalculator.dealtItems()) {
-			final List<Outfit> possibleOutfits = outfitTypes.get(outfitType);
-			for (final Outfit possibleOutfit : possibleOutfits) {
-				if (possibleOutfit.isPartOf(currentOutfit)) {
+			if (outfitType.equals("random mask")) {
+				if (currentOutfit.toString().contains(RandomoutfitTypes.get(outfitType).toString())) {
 					return true;
 				}
+			}
+			else if (outfitType.equals("random swimsuit")) {
+				if (currentOutfit.toString().contains(RandomoutfitTypes.get(outfitType).toString())) {
+					return true;
+				}
+			}
+			else if (outfitType.equals("random trunks")) {
+				if (currentOutfit.toString().contains(RandomoutfitTypes.get(outfitType).toString())) {
+					return true;
+				}
+			}
+			else if (currentOutfit.toString().contains(outfitTypes.get(outfitType).toString())) {
+				return true;
 			}
 		}
 		return false;
