@@ -200,7 +200,7 @@ public class LeaderNPCTest {
 		assertTrue(player.isEquipped("club of the GM"));
 
 		assertTrue(en.step(player, "weapon"));
-		assertEquals("That club of the GM is a powerful weapon, it has a good damage to rate ratio. It should be useful against strong creatures. Remember though that something weaker but faster may suffice against lower level creatures.", getReply(npc));
+		assertEquals("That club of the GM is a powerful weapon, it has a good damage to rate ratio.", getReply(npc));
 		player.drop(weapon9);
 		
 		
