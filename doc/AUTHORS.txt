@@ -201,3 +201,17 @@ Notable contributors:
 - SnowFlake
   · Maps maker
   · NPCs
+- Rui Bi
+  · Coder (Fish Soup for Hughie)
+- Shani De Silva
+  · Coder (Why does he ignore "horse hair")
+- Thomas Shimoda
+  · Coder (Lieutenant Drilenun suggests that a better weapon exists.... BUT HE IS WRONG)
+- Anandajyothis Binu
+  · Coder(Haunchy doesn't accept charcoal)
+- Afnan Bokhari
+  · Coder (Sheep pet prevents travel between zones)
+- Kadi Almanei
+  · Coder (Coralia should have option to accept everything)
+- Xinyu Li
+  · Coder (Players can’t choose what masks they get from Fidorea)
