@@ -180,7 +180,7 @@ ask for horse hair.
 				ConversationStates.ATTENDING,
 				"Great, now I can make new arrows. But for the bows I need " +
 				"bowstrings. Please go to #Karl. I know he has horses and if " +
-				"you tell him my name he will give you #'horse hairs' from a horsetail.",
+				"you tell him my name he will give you #'horse hair' from a horsetail.",
 				new MultipleActions(new SetQuestAndModifyKarmaAction(QUEST_SLOT, "hair", 2.0), new DropItemAction("wood", 10)));
 
 		/*
@@ -201,7 +201,7 @@ ask for horse hair.
 				new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
 								new NotCondition (new PlayerHasItemWithHimCondition("horse hair",1))),
 				ConversationStates.ATTENDING,
-				"Hello, hello! Ouchit needs more horse hairs from my horses? " +
+				"Hello, hello! Ouchit needs more horse hair from my horses? " +
 				"No problem, here you are. Send Ouchit greetings from me.",
 				new EquipItemAction("horse hair"));
 		npc.add(ConversationStates.ATTENDING,
@@ -209,7 +209,7 @@ ask for horse hair.
 					new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
 								new NotCondition (new PlayerHasItemWithHimCondition("horse hair",1))),
 				ConversationStates.ATTENDING,
-				"Hello, hello! Ouchit needs more horse hairs from my horses? " +
+				"Hello, hello! Ouchit needs more horse hair from my horses? " +
 				"No problem, here you are. Send Ouchit greetings from me.",
 				new EquipItemAction("horse hair"));
 	}
@@ -228,18 +228,18 @@ ask for horse hair.
 				ConversationPhrases.QUEST_MESSAGES,
 				new QuestInStateCondition(QUEST_SLOT,"hair"),
 				ConversationStates.ATTENDING,
-				"I'm waiting for you to bring me some #'horse hairs'.",
+				"I'm waiting for you to bring me some #'horse hair'.",
 				null);
 
 		/*
 		 * Player asks about horse hair, but hasn't collected any - remind them.
 		 */
 		npc.add(ConversationStates.ATTENDING,
-				Arrays.asList("hair", "horse", "horse hairs"),
+				Arrays.asList("hair", "horse", "horse hair"),
 				new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
 								new NotCondition (new PlayerHasItemWithHimCondition("horse hair"))),
 				ConversationStates.ATTENDING,
-				"Horse hairs can be used as a bowstring. Please fetch me some from #Karl.",
+				"Horse hair can be used as a bowstring. Please fetch me some from #Karl.",
 				null);
 
 		/*
@@ -257,11 +257,11 @@ ask for horse hair.
 and ask for horse hair.
 		 */
 		npc.add(ConversationStates.ATTENDING,
-				Arrays.asList("hair", "horse", "horse hairs"),
+				Arrays.asList("hair", "horse", "horse hair"),
 				new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
 								new PlayerHasItemWithHimCondition("horse hair")),
 				ConversationStates.ATTENDING,
-				"Yay, you got the horse hairs. Thanks a lot. Karl is really nice. Here, " +
+				"Yay, you got the horse hair. Thanks a lot. Karl is really nice. Here, " +
 				"take this for your work. Someone left it here and I don't need those things.",
 				new MultipleActions(reward));
 
@@ -304,10 +304,10 @@ and ask for horse hair.
 			res.add("I've got the wood to take to Ouchit.");
 		}
 		if(player.isQuestInState(QUEST_SLOT, "hair", "done")) {
-			res.add("Next I need to get some horse hairs, which Ouchit uses as bowstrings. I'm told the farmer Karl will help me.");
+			res.add("Next I need to get some horse hair, which Ouchit uses as bowstrings. I'm told the farmer Karl will help me.");
 		}
 		if(player.isEquipped("horse hair") && "hair".equals(questState) || isCompleted(player)) {
-			res.add("Karl was kind and gave me some horse hairs.");
+			res.add("Karl was kind and gave me some horse hair.");
 		}
 		if (isCompleted(player)) {
 			res.add("Ouchit gave me some new equipment as thanks for helping him.");

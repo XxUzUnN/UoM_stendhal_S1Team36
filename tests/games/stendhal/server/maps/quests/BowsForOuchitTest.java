@@ -105,13 +105,13 @@ public class BowsForOuchitTest {
 		en.step(player, "hi");
 		assertEquals("Greetings! How may I help you?", getReply(npc));
 		en.step(player, "wood");
-		assertEquals("Great, now I can make new arrows. But for the bows I need bowstrings. Please go to #Karl. I know he has horses and if you tell him my name he will give you #'horse hairs' from a horsetail.", getReply(npc));
+		assertEquals("Great, now I can make new arrows. But for the bows I need bowstrings. Please go to #Karl. I know he has horses and if you tell him my name he will give you #'horse hair' from a horsetail.", getReply(npc));
 
 		// check quest slot
 		assertEquals(player.getQuest(QUEST_SLOT),"hair");
 
-		en.step(player, "horse hairs");
-		assertEquals("Horse hairs can be used as a bowstring. Please fetch me some from #Karl.", getReply(npc));
+		en.step(player, "horse hair");
+		assertEquals("Horse hair can be used as a bowstring. Please fetch me some from #Karl.", getReply(npc));
 		en.step(player, "Karl");
 		assertEquals("Karl is a farmer, east of Semos. He has many pets on his farm.", getReply(npc));
 		en.step(player, "bye");
@@ -121,11 +121,11 @@ public class BowsForOuchitTest {
 		en.step(player, "hi");
 		assertEquals("Greetings! How may I help you?", getReply(npc));
 		en.step(player, "task");
-		assertEquals("I'm waiting for you to bring me some #'horse hairs'.", getReply(npc));
+		assertEquals("I'm waiting for you to bring me some #'horse hair'.", getReply(npc));
 
 		// notice a typo here done by the actual player
 		en.step(player, "hore hairs");
-		assertEquals("Horse hairs can be used as a bowstring. Please fetch me some from #Karl.", getReply(npc));
+		assertEquals("Horse hair can be used as a bowstring. Please fetch me some from #Karl.", getReply(npc));
 		en.step(player, "bye");
 		assertEquals("Bye.", getReply(npc));
 
@@ -150,8 +150,8 @@ public class BowsForOuchitTest {
 		en.step(player, "task");
 		assertEquals("I don't have time for those things, sorry. Working.. working.. working..", getReply(npc));
 
-		en.step(player, "horse hairs");
-		assertEquals("Hello, hello! Ouchit needs more horse hairs from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
+		en.step(player, "horse hair");
+		assertEquals("Hello, hello! Ouchit needs more horse hair from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
 		en.step(player, "bye");
 		assertEquals("Bye bye. Be careful on your way.", getReply(npc));
 
@@ -179,12 +179,12 @@ public class BowsForOuchitTest {
 		en.step(player, "task");
 		assertEquals("I don't have time for those things, sorry. Working.. working.. working..", getReply(npc));
 
-		// he doesn't seem to reply to horse hairs
-		//en.step(player, "horse hairs");
+		// he doesn't seem to reply to horse hair
+		//en.step(player, "horse hair");
 		//assertNull(getReply(npc));
 
 		en.step(player, "ouchit");
-		assertEquals("Hello, hello! Ouchit needs more horse hairs from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
+		assertEquals("Hello, hello! Ouchit needs more horse hair from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
 		en.step(player, "bye");
 		assertEquals("Bye bye. Be careful on your way.", getReply(npc));
 
@@ -217,9 +217,9 @@ public class BowsForOuchitTest {
 		en.step(player, "hi");
 		assertEquals("Greetings! How may I help you?", getReply(npc));
 		en.step(player, "task");
-		assertEquals("I'm waiting for you to bring me some #'horse hairs'.", getReply(npc));
-		en.step(player, "horse hairs");
-		assertEquals("Yay, you got the horse hairs. Thanks a lot. Karl is really nice. Here, take this for your work. Someone left it here and I don't need those things.", getReply(npc));
+		assertEquals("I'm waiting for you to bring me some #'horse hair'.", getReply(npc));
+		en.step(player, "horse hair");
+		assertEquals("Yay, you got the horse hair. Thanks a lot. Karl is really nice. Here, take this for your work. Someone left it here and I don't need those things.", getReply(npc));
 
 		// [19:57] kymara earns 100 experience points.
 		// check quest slot and rewards
