@@ -39,6 +39,7 @@ public class BankNPC implements ZoneConfigurator {
 	@Override
 	public void configureZone(final StendhalRPZone zone, final Map<String, String> attributes) {
 		buildNPC(zone);
+		buildTellerNPC(zone);
 	}
 
 	private void buildNPC(final StendhalRPZone zone) {
@@ -75,6 +76,39 @@ public class BankNPC implements ZoneConfigurator {
 		npc.setDirection(Direction.DOWN);
 		npc.setPosition(9, 4);
 		npc.initHP(100);
+		zone.add(npc);
+
+	}
+	
+	private void buildTellerNPC(final StendhalRPZone zone) {
+		final SpeakerNPC npc = new SpeakerNPC("Yance") {
+
+			@Override
+			protected void createPath() {
+				setPath(null);
+			}
+
+			@Override
+			protected void createDialog() {
+				addGreeting("Welcome to Ados Bank!");
+				addJob("I am the Teller of Ados Bank.");
+				// this is the trigger which is going to be used to get bank statements
+				addReply("statements", "this feature's functionality has not been implemented yet.");
+				addGoodbye("Have a nice day.");
+				
+			}
+
+			@Override
+			protected void onGoodbye(RPEntity player) {
+				setDirection(Direction.DOWN);
+			}
+		};
+
+		npc.setDescription("Yance is the Ados bank teller. He can help you get your bank statements.");
+		npc.setEntityClass("adosbankassistantnpc");
+		npc.setDirection(Direction.DOWN);
+		npc.setPosition(15, 4);
+		npc.initHP(1000);
 		zone.add(npc);
 
 	}
