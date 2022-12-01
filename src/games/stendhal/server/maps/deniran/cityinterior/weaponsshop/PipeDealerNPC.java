@@ -35,7 +35,7 @@ public class PipeDealerNPC implements ZoneConfigurator {
             }
         };
         npc.setPosition(11, 15);
-        npc.setEntityClass("weaponsellernpc");
+        npc.setEntityClass("pipedealernpc");
         npc.setDescription("You see Pippa, the pipe dealer.");
         zone.add(npc);
     }
