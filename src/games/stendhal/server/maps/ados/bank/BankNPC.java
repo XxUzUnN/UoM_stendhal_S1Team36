@@ -107,7 +107,7 @@ public class BankNPC implements ZoneConfigurator {
 		npc.setDescription("Yance is the Ados bank teller. He can help you get your bank statements.");
 		npc.setEntityClass("adosbankassistantnpc");
 		npc.setDirection(Direction.DOWN);
-		npc.setPosition(15, 4);
+		npc.setPosition(16, 4);
 		npc.initHP(1000);
 		zone.add(npc);
 
