@@ -20,6 +20,7 @@ public class AttackStrategyFactory {
 	private static final AttackStrategy STUPID_COWARD = new StupidCoward();
 	private static final AttackStrategy GANDHI = new Gandhi();
 	private static final AttackStrategy ATTACK_WEAKEST = new AttackWeakest();
+	private static final AttackStrategy CHARMING = new Charming();
 
     private static final AttackStrategy CAMOUFLAGED = new DecamouflageAttackStrategy(HAND_TO_HAND);
 
@@ -38,6 +39,8 @@ public class AttackStrategyFactory {
 			return ATTACK_WEAKEST;
 		} else if (aiProfiles.containsKey("strategy")) {
 			return CompoundAttackStrategy.create(aiProfiles.get("strategy"));
+		} else if (aiProfiles.containsKey("charming")) {
+			return CHARMING;
         } else if (aiProfiles.containsKey("camouflage")) {
             return CAMOUFLAGED;
 		}
