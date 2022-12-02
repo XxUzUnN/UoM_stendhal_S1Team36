@@ -54,8 +54,8 @@ public class PipeTest {
         creature2.setHP(50);
         creature.setTarget(player);
         creature2.setTarget(player2);
-        player.getEquippedItemClass("lhand", "pipe");
-        player2.getEquippedItemClass("rhand", "pipe");
+        player.isEquippedItemInSlot("lhand", "pipe");
+        player2.isEquippedItemInSlot("rhand", "pipe");
         assertTrue("Player can be attacked when has pipe in left hand", creature.getAttackStrategy() instanceof Charming);
         assertTrue("Player can be attacked when has pipe in right hand", creature2.getAttackStrategy() instanceof Charming);
         player.drop("pipe");
