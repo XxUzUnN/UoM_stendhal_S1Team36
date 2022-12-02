@@ -1,7 +1,10 @@
 package games.stendhal.server.entity.item;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.creature.Creature;
-import games.stendhal.server.entity.player.Player;
+//import marauroa.common.crypto.Hash;
+//
+//import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Pipe extends Item {
@@ -27,28 +30,34 @@ public class Pipe extends Item {
         return "pipe";
     }
 
-    //player doesn't have pipe
-    public boolean notCharmed(final RPEntity user) {
-        if (user instanceof Player) {
-            final Player player = (Player) user;
-            if (player.has("pipe")) {
-                return false;
+    //add the attribute "charming" to the creature when the player has pipe
+    private RPEntity equipper;
+    @Override
+    public boolean onEquipped(RPEntity equipper, String slot) {
+        List<RPEntity> attackers = this.equipper.getAttackingRPEntities();
+        for (RPEntity attacker : attackers) {
+            if (attacker instanceof Creature) {
+                Map<String, String> aiProfiles = ((Creature) attacker).getAIProfiles();
+                aiProfiles.put("charming", "");
+                ((Creature) attacker).getAttackStrategy();
             }
         }
+        this.equipper = equipper;
         return true;
     }
 
-    //player has pipe
-    //make sure player can't be targeted by creatures
-    public boolean charmedByPipe(final RPEntity user) {
-        if (user instanceof Player) {
-            final Player player = (Player) user;
-            if (player.getEquippedItemClass("lhand", "pipe") != null) {
-                //uncompleted
-                return true;
+    //remove the attribute "charming" to the creature when the player doesn't have pipe
+    @Override
+    public boolean onUnequipped() {
+        List<RPEntity> attackers = this.equipper.getAttackingRPEntities();
+        for (RPEntity attacker : attackers) {
+            if (attacker instanceof Creature) {
+                Map<String, String> aiProfiles = ((Creature) attacker).getAIProfiles();
+                aiProfiles.remove("charming");
+                ((Creature) attacker).getAttackStrategy();
             }
         }
-        return false;
+        this.equipper = null;
+        return true;
     }
-
 }
