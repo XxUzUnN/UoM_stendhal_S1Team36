@@ -27,6 +27,10 @@ public class AttackStrategyFactory {
 
 	public static AttackStrategy get(final Map<String, String> aiProfiles) {
 
+		if (aiProfiles.containsKey("charming")){
+			return CHARMING;
+		}
+
 		if (aiProfiles.containsKey("archer")) {
 			return new RangeAttack(aiProfiles.get("archer"));
 		} else if (aiProfiles.containsKey("coward")) {
@@ -39,8 +43,6 @@ public class AttackStrategyFactory {
 			return ATTACK_WEAKEST;
 		} else if (aiProfiles.containsKey("strategy")) {
 			return CompoundAttackStrategy.create(aiProfiles.get("strategy"));
-		} else if (aiProfiles.containsKey("charming")) {
-			return CHARMING;
         } else if (aiProfiles.containsKey("camouflage")) {
             return CAMOUFLAGED;
 		}
