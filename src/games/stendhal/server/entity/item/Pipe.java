@@ -1,9 +1,8 @@
 package games.stendhal.server.entity.item;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.creature.Creature;
-//import marauroa.common.crypto.Hash;
-//
-//import java.util.HashMap;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,30 +33,40 @@ public class Pipe extends Item {
     private RPEntity equipper;
     @Override
     public boolean onEquipped(RPEntity equipper, String slot) {
-        List<RPEntity> attackers = this.equipper.getAttackingRPEntities();
-        for (RPEntity attacker : attackers) {
-            if (attacker instanceof Creature) {
-                Map<String, String> aiProfiles = ((Creature) attacker).getAIProfiles();
-                aiProfiles.put("charming", "");
-                ((Creature) attacker).getAttackStrategy();
+        if (slot.equals("lhand") || slot.equals("rhand")) {
+            List<RPEntity> attackers = equipper.getAttackingRPEntities();
+            for (RPEntity attacker : attackers) {
+                if (attacker instanceof Creature) {
+                    Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) attacker).getAIProfiles());
+                    if (!aiProfiles.containsKey("charming")) {
+                        aiProfiles.put("charming", "");
+                    }
+                    ((Creature) attacker).setAIProfiles(aiProfiles);
+                }
             }
+            this.equipper = equipper;
+            return true;
         }
-        this.equipper = equipper;
-        return true;
+        return false;
     }
 
     //remove the attribute "charming" to the creature when the player doesn't have pipe
     @Override
     public boolean onUnequipped() {
-        List<RPEntity> attackers = this.equipper.getAttackingRPEntities();
-        for (RPEntity attacker : attackers) {
-            if (attacker instanceof Creature) {
-                Map<String, String> aiProfiles = ((Creature) attacker).getAIProfiles();
-                aiProfiles.remove("charming");
-                ((Creature) attacker).getAttackStrategy();
+        if (equipper != null) {
+            List<RPEntity> attackers = this.equipper.getAttackingRPEntities();
+            for (RPEntity attacker : attackers) {
+                if (attacker instanceof Creature) {
+                    Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) attacker).getAIProfiles());
+                    if (aiProfiles.containsKey("charming")) {
+                        aiProfiles.remove("charming", "");
+                    }
+                    ((Creature) attacker).setAIProfiles(aiProfiles);
+                }
             }
+            this.equipper = null;
+            return true;
         }
-        this.equipper = null;
-        return true;
+        return false;
     }
 }
