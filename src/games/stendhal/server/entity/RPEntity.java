@@ -1257,8 +1257,8 @@ public abstract class RPEntity extends CombatEntity {
 		if (this instanceof Creature && attackTarget.isEquipped("pipe")) {
 			if (attackTarget.isEquippedItemInSlot("lhand", "pipe") || attackTarget.isEquippedItemInSlot("rhand", "pipe")) {
 				Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) this).getAIProfiles());
-				if(aiProfiles.containsKey("charming")) {
-					aiProfiles.put("charming", "");
+				if(!aiProfiles.containsKey("charming")) {
+					aiProfiles.put("charming", "null");
 				}
 				((Creature) this).setAIProfiles(aiProfiles);
 			}
@@ -3152,7 +3152,7 @@ System.out.printf("  drop: %2d %2d\n", attackerRoll, defenderRoll);
 		if (this instanceof Creature && attackTarget.isEquipped("pipe")) {
 			if (attackTarget.isEquippedItemInSlot("lhand", "pipe") || attackTarget.isEquippedItemInSlot("rhand", "pipe")) {
 				Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) this).getAIProfiles());
-				if(aiProfiles.containsKey("charming")) {
+				if(!aiProfiles.containsKey("charming")) {
 					aiProfiles.put("charming", "");
 				}
 				((Creature) this).setAIProfiles(aiProfiles);
