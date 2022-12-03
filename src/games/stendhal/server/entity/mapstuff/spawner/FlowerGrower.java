@@ -47,7 +47,7 @@ public class FlowerGrower extends VegetableGrower {
 	"You see a fully grown " + Grammar.fullForm(getVegetableName())
 	+ ", ready to pull from the ground." };
 
-	public String state="";
+	public String state="free";
 
 	/**
 	* Constructor for loading FlowerGrower from the stored zone used by
@@ -137,7 +137,7 @@ public class FlowerGrower extends VegetableGrower {
 				if (entity instanceof FlowerGrower) {
 					if (!equals(entity)) {
 					// There's already something else growing here
-						
+						setState("reserved");
 						return false;
 				
 						}
@@ -149,7 +149,14 @@ public class FlowerGrower extends VegetableGrower {
 					}
 				}
 		}
-		
+		if(passes==true)
+		{
+			setState("free");
+		}
+		else
+		{
+			setState("reserved");
+		}
 		return passes;
 		}
 	}
@@ -176,6 +183,6 @@ public class FlowerGrower extends VegetableGrower {
 
 	public void setState(String s)
 	{
-		
+		state=s;
 	}
 }

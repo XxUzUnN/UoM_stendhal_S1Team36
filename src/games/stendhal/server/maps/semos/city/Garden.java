@@ -54,7 +54,10 @@ public class Garden extends FertileGrounds{
 	
 	public boolean equipmentAvilable(Player player){
 		// player=new PlayerHasItemWithHimCondition("shovel",1);
-		return false;
+		if(player.isEquipped("shovel", 1)){
+			return true;
+	}
+	return false;
 	}
 
 
