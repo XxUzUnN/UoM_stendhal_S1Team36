@@ -52,16 +52,12 @@ public class PipeTest {
         player2.setHP(100);
         creature.setHP(50);
         creature2.setHP(50);
-        creature.setTarget(player);
-        creature2.setTarget(player2);
         PlayerTestHelper.equipWithItemToSlot(player, "pipe", "lhand");
         PlayerTestHelper.equipWithItemToSlot(player2, "pipe", "rhand");
+        creature.setTarget(player);
+        creature2.setTarget(player2);
         assertTrue("Player can be attacked when has pipe in left hand", creature.getAttackStrategy() instanceof Charming);
         assertTrue("Player can be attacked when has pipe in right hand", creature2.getAttackStrategy() instanceof Charming);
-        player.drop("pipe");
-        player2.drop("pipe");
-        assertFalse("Player can't be attacked after removing the pipe", creature.getAttackStrategy() instanceof Charming);
-        assertFalse("Player can't be attacked after removing the pipe", creature2.getAttackStrategy() instanceof Charming);
     }
 
 }
