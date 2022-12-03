@@ -7,6 +7,9 @@ public class Charming extends HandToHand{
 
     @Override
     public boolean canAttackNow(Creature attacker, RPEntity target) {
-        return false;
+        if(target.isEquippedItemInSlot("lhand", "pipe") || target.isEquippedItemInSlot("rhand", "pipe")){
+            return false;
+        }
+        return super.canAttackNow(attacker, target);
     }
 }
