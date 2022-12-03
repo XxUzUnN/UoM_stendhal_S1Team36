@@ -9,7 +9,7 @@ import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.mapstuff.area.Allotment;
 //import games.stendhal.server.entity.mapstuff.area.FertileGround;
 //import games.stendhal.server.entity.mapstuff.spawner.FlowerGrower;
-//import games.stendhal.server.entity.player.Player;
+import games.stendhal.server.entity.player.Player;
 
 
 public class Garden extends FertileGrounds{
@@ -52,7 +52,10 @@ public class Garden extends FertileGrounds{
 	}
 	
 	
-	
+	public boolean equipmentAvilable(Player player){
+		// player=new PlayerHasItemWithHimCondition("shovel",1);
+		return false;
+	}
 
 
 

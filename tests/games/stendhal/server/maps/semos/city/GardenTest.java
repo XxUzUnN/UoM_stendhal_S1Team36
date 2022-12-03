@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.mapstuff.spawner.FlowerGrower;
-//import games.stendhal.server.entity.player.Player;
-//import utilities.PlayerTestHelper;
+import games.stendhal.server.entity.player.Player;
+import utilities.PlayerTestHelper;
 
 import static org.junit.Assert.*;
 
@@ -38,6 +38,14 @@ public void testState()
 	
 	}
 	
+	@Test
+	public void testEquipmentAvilable(){
+		Player player=PlayerTestHelper.createPlayer("bob");
+		PlayerTestHelper.equipWithItem(player, "shovel");
+		Garden garden=new Garden();
+	
+		assertTrue(garden.equipmentAvilable(player));
+	}
 	
 	
 	
