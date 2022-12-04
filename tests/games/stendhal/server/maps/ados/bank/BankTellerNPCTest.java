@@ -12,12 +12,18 @@
  ***************************************************************************/
 package games.stendhal.server.maps.ados.bank;
 
+import games.stendhal.server.core.engine.SingletonRepository;
+import games.stendhal.server.core.engine.StendhalRPZone;
+import games.stendhal.server.entity.npc.NPC;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.player.Player;
+import games.stendhal.server.maps.ados.bar.BarMaidNPC;
+
 import org.junit.Test;
 import utilities.PlayerTestHelper;
 import utilities.ZonePlayerAndNPCTestImpl;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static utilities.SpeakerNPCTestHelper.getReply;
 
@@ -48,6 +54,22 @@ public class BankTellerNPCTest extends ZonePlayerAndNPCTestImpl {
         assertEquals("this feature's functionality has not been implemented yet.", getReply(npc));
         
     }
+    
+    @Test
+	public void testConfigureZone() {
+
+		SingletonRepository.getRPWorld();
+		final BankNPC bankTellerNPC = new BankNPC();
+
+		final StendhalRPZone zone = new StendhalRPZone("testzone");
+		bankTellerNPC.configureZone(zone, null);
+		assertFalse(zone.getNPCList().isEmpty());
+		final NPC bankTeller = zone.getNPCList().get(1);
+		assertThat(bankTeller.getName(), is("Yance"));
+		assertThat(bankTeller.getDescription(), is("Yance is the Ados bank teller. He can help you get your bank statements."));
+	}
+    
+    
 }
 
 	
