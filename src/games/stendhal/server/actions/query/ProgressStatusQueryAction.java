@@ -16,6 +16,7 @@ import static games.stendhal.common.constants.Actions.PROGRESS_STATUS;
 import java.util.Arrays;
 import java.util.List;
 
+import games.stendhal.client.gui.progress.BankStatement;
 import games.stendhal.server.actions.ActionListener;
 import games.stendhal.server.actions.CommandCenter;
 import games.stendhal.server.core.engine.SingletonRepository;
@@ -64,7 +65,7 @@ public class ProgressStatusQueryAction implements ActionListener {
 	 * @param player Player to sent the event to
 	 */
 	private void sendProgressTypes(Player player) {
-		List<String> list = Arrays.asList("Open Quests", "Completed Quests", "Production");
+		List<String> list = Arrays.asList("Open Quests", "Completed Quests", "Production", "Bank Statements");	//added extra tab here for bank statements
 		player.addEvent(new ProgressStatusEvent(list));
 		player.notifyWorldAboutChanges();
 	}
@@ -88,6 +89,9 @@ public class ProgressStatusQueryAction implements ActionListener {
 		} else if (progressType.equals("Production")) {
 			player.addEvent(new ProgressStatusEvent(progressType,
 					SingletonRepository.getProducerRegister().getWorkingProducerNames(player)));
+		//if progress type is bank statement, returns lis of banks on left hand window
+		} else if (progressType.contentEquals("Bank Statements")) {
+			player.addEvent(new ProgressStatusEvent(progressType, BankStatement.getBankStatementNames()));
 		}
 		player.notifyWorldAboutChanges();
 	}
@@ -110,7 +114,10 @@ public class ProgressStatusQueryAction implements ActionListener {
 			player.addEvent(new ProgressStatusEvent(progressType, item,
 					SingletonRepository.getProducerRegister().getProductionDescription(player, item),
 					SingletonRepository.getProducerRegister().getProductionDetails(player, item)));
-		}
-		player.notifyWorldAboutChanges();
+		//returns respective bank statement if clicking on banks name
+		} else if (progressType.equals("Bank Statements")) {
+			player.addEvent(new ProgressStatusEvent(progressType, item,
+					(item + " Bank Statement"), BankStatement.getBankStatement(item)));
+		player.notifyWorldAboutChanges();}
 	}
 }
