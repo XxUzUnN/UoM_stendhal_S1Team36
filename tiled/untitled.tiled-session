@@ -1,0 +1,414 @@
+{
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "Level 0/ados/city.tmx": {
+            "scale": 0.21453857421875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2048.582645803699,
+                "y": 2048.5826458036986
+            }
+        },
+        "Level 0/ados/city.tmx#animal": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#board walk": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#collision": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#deep pool": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#dim light 7x5": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#door light": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#green_stone": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#huts": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#indoor/tiles": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#lamp": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#light5x5": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#log vertical": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#logic/creature/fowl": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#mutant": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#numbers": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#stairs": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#statue/bird": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#stick": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#stump vertical": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/city.tmx#suspension bridge": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/castle.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/church.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/banner.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/chimney.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/chimney_big.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/library_banner.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/longhorn_skull.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/decoration/orbpedestal.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/door/closed.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/door/closed_with_key.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/door/door_e.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/door/door_n.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/door/door_w.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/entrance/int_iron_bars.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/fence/fence_chunky.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/roof/blue.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/roof/green.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/roof/red.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/roof/yellow.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/wall/stone.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/wall/wall_brown.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/wall/wood.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/window/window_left.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/window/window_long.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/building/window/window_right.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/furniture/chair/wooden_pale.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/furniture/table/wooden_pale.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/brown_paving.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/cobbled_paving.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/eye.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/green_paving.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/ground.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/ground_2.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/water/dungeon_water.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/ground/water/pool.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/item/sign_large.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/item/statue/fairypool.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/item/statue/green_stone_2.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/item/statue/grey_stone.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/bush/bushes.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/bush/hedge.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/flower/daisy_blue.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/flower/daisy_red.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/flower/daisy_white.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/flower/daisy_yellow.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/grasses.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/stump/small_stump.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/ados/tileset/plant/tree/tree_green.png": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3575.5,
+                "y": 245.5
+            }
+        },
+        "Level 0/kalavan/city.tmx#barrel small": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#bench": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#brick base": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#chair wooden pale": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#chimney": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#cobbled paving": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#door": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#door closed": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#fairypool": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#fence chunky": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#fire": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#fishing rods": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#flames": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#floor stone floors": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#flower daisy blue": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#flower daisy red": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#flower daisy white": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#flower daisy yellow": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#grass corners": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#grass edges": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#gravel": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#green paving 4": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#ground": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#ground/green_paving": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#hosta": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#huge orb": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#iron lamp": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#item/firewood": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#light/dim_light_5x5": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#light5x5": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#logic/collision": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#logic/creature/animal": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#logic/creature/fowl": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#logic/creature/human_imperial": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#logic/creature/human_kalavan": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#numbers": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#orbpedestal": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#plant various small": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#postbox": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#pot purple": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#pot tall": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof blue": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof borders": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof green": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof red": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof red2": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#roof yellow": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#sign large": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#sink dark side on": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#statue metal and stone": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#stone details": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#swing": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#table wooden": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#table wooden rec": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#tree fluffy": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#tree green": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#tree spruce": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#wall brown": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#water": {
+            "scaleInDock": 1
+        },
+        "Level 0/kalavan/city.tmx#window long": {
+            "scaleInDock": 1
+        }
+    },
+    "openFiles": [
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "Level 0/kalavan/city.tmx",
+        "Level 0/ados/city.tmx"
+    ]
+}

@@ -37,61 +37,65 @@ public class FlowerGrower extends VegetableGrower {
 	/** Maximum ripeness of flowers */
 	private static final int MAX_RIPENESS = 4;
 	private static final String GROWER_NAME = "lilia";
-    /** The description depends upon the ripeness of the flower grower */
+	    /** The description depends upon the ripeness of the flower grower */
 	private final String[] description = {
-			"You see something which has just been planted.",
-			"Something is sprouting from the ground.",
-			"A plant is growing here, and you can already see foliage.",
-			"You see a plant growing a " + Grammar.fullForm(getVegetableName())
-					+ ", it is nearly at full maturity.",
-			"You see a fully grown " + Grammar.fullForm(getVegetableName())
-					+ ", ready to pull from the ground." };
+	"You see something which has just been planted.",
+	"Something is sprouting from the ground.",
+	"A plant is growing here, and you can already see foliage.",
+	"You see a plant growing a " + Grammar.fullForm(getVegetableName())
+	+ ", it is nearly at full maturity.",
+	"You see a fully grown " + Grammar.fullForm(getVegetableName())
+	+ ", ready to pull from the ground." };
+
+	public String state="free";
 
 	/**
-	 * Constructor for loading FlowerGrower from the stored zone used by
-	 * StendhalRPObjectFactory.
-	 *
-	 * @see StendhalRPObjectFactory
-	 *
-	 * @param object
-	 *            the restored object from db
-	 * @param itemname
-	 *            the item to grow
-	 */
+	* Constructor for loading FlowerGrower from the stored zone used by
+	* StendhalRPObjectFactory.
+	*
+	* @see StendhalRPObjectFactory
+	*
+	* @param object
+	*            the restored object from db
+	* @param itemname
+	*            the item to grow
+	*/
 	public FlowerGrower(final RPObject object, final String itemname) {
 		super(object, itemname, MAX_RIPENESS, GROW_TIME_TURNS);
 		store();
 	}
 
 	/**
-	 * Constructor.
-	 *
-	 * Default FlowerGrower produces lilia.
-	 */
-	public FlowerGrower() {
+	* Constructor.
+	*
+	* Default FlowerGrower produces lilia.
+	*/
+	public FlowerGrower() 
+	{
 		this(GROWER_NAME);
 		store();
 	}
 
 	/**
-	 * Constructor of a FlowerGrower growing an item with the name specified in
-	 * infostring.
-	 *
-	 * @param infoString
-	 *            the name of the item to produce
-	 *
-	 */
-	public FlowerGrower(final String infoString) {
+	* Constructor of a FlowerGrower growing an item with the name specified in
+	* infostring.
+	*
+	* @param infoString
+	*            the name of the item to produce
+	*
+	*/
+	public FlowerGrower(final String infoString) 
+	{
 		super(infoString);
 		setMaxRipeness(MAX_RIPENESS);
 		meanTurnsForRegrow = GROW_TIME_TURNS;
 		store();
 	}
 
-	/**
-	 * Removes this from world. This method is called when the fruit of this
-	 * grower is picked.
-	 */
+/**
+* Removes this from world. This method is called when the fruit of this
+* grower is picked.
+*/
 	@Override
 	public void onFruitPicked(final Item picked) {
 		getZone().remove(this);
@@ -114,43 +118,71 @@ public class FlowerGrower extends VegetableGrower {
 	}
 
 	/**
-	 * Checks if this entity is on a free fertile spot.
-	 *
-     * If yes, the flower can grow. Otherwise it withers and dies.
-     *
-	 * @return true if there is an item implementing FertileGround in the zone,
-	 *         and the position of this is in its area.
-	 */
+	* Checks if this entity is on a free fertile spot.
+	*
+	     * If yes, the flower can grow. Otherwise it withers and dies.
+	     *
+	* @return true if there is an item implementing FertileGround in the zone,
+	*         and the position of this is in its area.
+	*/
+	
 	public boolean isOnFreeFertileGround() {
 		if (this.getZone() == null) {
 			return false;
-		} else {
+		}
+		else {
 			final StendhalRPZone zone = this.getZone();
 			boolean passes = false;
 			for (Entity entity : zone.getEntitiesAt(getX(), getY())) {
 				if (entity instanceof FlowerGrower) {
 					if (!equals(entity)) {
-						// There's already something else growing here
+					// There's already something else growing here
+						setState("reserved");
 						return false;
-					}
-				} else {
-					if (entity instanceof FertileGround) {
+				
+						}
+			} 
+				else {
+					if (entity instanceof FertileGround) 
+					{
 						passes = true;
 					}
 				}
-			}
-			return passes;
+		}
+		if(passes==true)
+		{
+			setState("free");
+		}
+		else
+		{
+			setState("reserved");
+		}
+		return passes;
 		}
 	}
-
+	
 	@Override
 	protected void growNewFruit() {
-		if (isOnFreeFertileGround()) {
-			super.growNewFruit();
-		} else {
-			if (getZone() != null) {
+	if (isOnFreeFertileGround()) 
+	{
+		super.growNewFruit();
+	} 
+	else 
+		{
+			if (getZone() != null) 
+			{
 				getZone().remove(this);
 			}
 		}
+	}
+
+	public String getState()
+	{
+		return state;
+	}
+
+	public void setState(String s)
+	{
+		state=s;
 	}
 }
