@@ -20,11 +20,16 @@ public class AttackStrategyFactory {
 	private static final AttackStrategy STUPID_COWARD = new StupidCoward();
 	private static final AttackStrategy GANDHI = new Gandhi();
 	private static final AttackStrategy ATTACK_WEAKEST = new AttackWeakest();
+	private static final AttackStrategy CHARMING = new Charming();
 
     private static final AttackStrategy CAMOUFLAGED = new DecamouflageAttackStrategy(HAND_TO_HAND);
 
 
 	public static AttackStrategy get(final Map<String, String> aiProfiles) {
+
+		if (aiProfiles.containsKey("charming")){
+			return CHARMING;
+		}
 
 		if (aiProfiles.containsKey("archer")) {
 			return new RangeAttack(aiProfiles.get("archer"));

@@ -1197,6 +1197,7 @@ Entrance fee is 10 money</attribute>
 
     <!-- NPCs -->
     <configurator class-name="games.stendhal.server.maps.deniran.cityinterior.weaponsshop.WeaponDealerNPC"/>
+    <configurator class-name="games.stendhal.server.maps.deniran.cityinterior.weaponsshop.PipeDealerNPC"/>
 
   </zone>
 

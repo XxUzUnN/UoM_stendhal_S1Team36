@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -1252,6 +1253,16 @@ public abstract class RPEntity extends CombatEntity {
 			attackTarget.attackSources.remove(this);
 		}
 		attackTarget = target;
+
+		if (this instanceof Creature && attackTarget.isEquipped("pipe")) {
+			if (attackTarget.isEquippedItemInSlot("lhand", "pipe") || attackTarget.isEquippedItemInSlot("rhand", "pipe")) {
+				Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) this).getAIProfiles());
+				if(!aiProfiles.containsKey("charming")) {
+					aiProfiles.put("charming", "null");
+				}
+				((Creature) this).setAIProfiles(aiProfiles);
+			}
+		}
 	}
 
 	/** Modify the entity to stop attacking. */
@@ -3137,6 +3148,16 @@ System.out.printf("  drop: %2d %2d\n", attackerRoll, defenderRoll);
 		// isInZoneandNotDead(defender);
 
 		defender.rememberAttacker(this);
+
+		if (this instanceof Creature && attackTarget.isEquipped("pipe")) {
+			if (attackTarget.isEquippedItemInSlot("lhand", "pipe") || attackTarget.isEquippedItemInSlot("rhand", "pipe")) {
+				Map<String, String> aiProfiles = new HashMap<String, String>(((Creature) this).getAIProfiles());
+				if(!aiProfiles.containsKey("charming")) {
+					aiProfiles.put("charming", "");
+				}
+				((Creature) this).setAIProfiles(aiProfiles);
+			}
+		}
 
 		final int maxRange = getMaxRangeForArcher();
 		/*
