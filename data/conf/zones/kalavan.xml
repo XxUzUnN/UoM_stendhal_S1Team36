@@ -167,6 +167,174 @@ No access.</attribute>
 
   <zone name="0_kalavan_city" level="0" x="499616" y="500768"
     file="Level 0/kalavan/city.tmx">
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">125</parameter>
+      <parameter name="y">9</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">8</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">114</parameter>
+      <parameter name="y">31</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">114</parameter>
+      <parameter name="y">37</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">6</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">125</parameter>
+      <parameter name="y">55</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">5</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">114</parameter>
+      <parameter name="y">95</parameter>
+      <parameter name="width">6</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">118</parameter>
+      <parameter name="y">109</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">110</parameter>
+      <parameter name="y">126</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">99</parameter>
+      <parameter name="y">126</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">73</parameter>
+      <parameter name="y">126</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">56</parameter>
+      <parameter name="y">111</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">49</parameter>
+      <parameter name="y">117</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">9</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">15</parameter>
+      <parameter name="y">126</parameter>
+      <parameter name="width">9</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">1</parameter>
+      <parameter name="y">117</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">8</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">13</parameter>
+      <parameter name="y">100</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">6</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">1</parameter>
+      <parameter name="y">95</parameter>
+      <parameter name="width">9</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">5</parameter>
+      <parameter name="y">79</parameter>
+      <parameter name="width">9</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">13</parameter>
+      <parameter name="y">54</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">6</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">3</parameter>
+      <parameter name="y">49</parameter>
+      <parameter name="width">8</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">13</parameter>
+      <parameter name="y">22</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">7</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">16</parameter>
+      <parameter name="y">8</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">5</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">30</parameter>
+      <parameter name="y">16</parameter>
+      <parameter name="width">6</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">37</parameter>
+      <parameter name="y">10</parameter>
+      <parameter name="width">5</parameter>
+      <parameter name="height">1</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">75</parameter>
+      <parameter name="y">2</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">6</parameter>
+    </configurator>
+    
+    <configurator class-name="games.stendhal.server.maps.semos.city.Garden">
+      <parameter name="x">108</parameter>
+      <parameter name="y">7</parameter>
+      <parameter name="width">1</parameter>
+      <parameter name="height">6</parameter>
+    </configurator>
 
     <attributes>
       <parameter name="color_method">time</parameter>
