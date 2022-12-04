@@ -1,7 +1,6 @@
 package games.stendhal.client.gui.progress;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BankStatement {
