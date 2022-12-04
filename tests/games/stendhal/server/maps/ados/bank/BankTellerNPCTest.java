@@ -17,7 +17,7 @@ import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.npc.NPC;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.player.Player;
-import games.stendhal.server.maps.ados.bar.BarMaidNPC;
+import games.stendhal.server.maps.ados.bank.BankNPC;
 
 import org.junit.Test;
 import utilities.PlayerTestHelper;
@@ -41,9 +41,6 @@ public class BankTellerNPCTest extends ZonePlayerAndNPCTestImpl {
     }
 
 
-    /**
-     * Tests for PipeDealerNPC.
-     */
     @Test
     public void testPipeDealerNpc(){
         final SpeakerNPC npc = getNPC(npcName);
