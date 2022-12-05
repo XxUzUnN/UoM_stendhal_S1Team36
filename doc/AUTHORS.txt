@@ -203,15 +203,22 @@ Notable contributors:
   · NPCs
 - Rui Bi
   · Coder (Fish Soup for Hughie)
+  · Coder (Bank Statements)
 - Shani De Silva
   · Coder (Why does he ignore "horse hair")
+  · Coder (Pipe that charms hostile creatures)
 - Thomas Shimoda
   · Coder (Lieutenant Drilenun suggests that a better weapon exists.... BUT HE IS WRONG)
+  · Coder (Bank Statements)
 - Anandajyothis Binu
   · Coder(Haunchy doesn't accept charcoal)
+  · Coder (Bank Statements)
 - Afnan Bokhari
   · Coder (Sheep pet prevents travel between zones)
+  · Coder (Let home owners grow things in their gardens)
 - Kadi Almanei
   · Coder (Coralia should have option to accept everything)
+  · Coder (Let home owners grow things in their gardens)
 - Xinyu Li
   · Coder (Players can’t choose what masks they get from Fidorea)
+  · Coder (Pipe that charms hostile creatures)

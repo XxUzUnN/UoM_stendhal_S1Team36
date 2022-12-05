@@ -1,12 +1,19 @@
 Changelog
 ---------
 ---------
+1.41uom
+*features*
+- Admin players can charm hostile creatures by wearing pipe.
+- There are gardens for existing houses, and special shovels to prepare the land for seeding
+- Players now can accessing bank chest, but tab that shows empty content of chest in this version.
+
+
 1.40uom
 *world*
 - Players now can choose what masks they get from Fidorea
 - Players can give Coralia everything
 
-*features*
+*fix*
 - A text massage is shown for the player when trying to move between zones
 - Haunchy now accepts charcoal
 - The suggestion of improvement to weapon now is right
