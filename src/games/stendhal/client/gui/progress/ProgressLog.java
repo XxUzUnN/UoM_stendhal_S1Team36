@@ -56,7 +56,7 @@ import games.stendhal.client.sprite.DataLoader;
  */
 class ProgressLog {
 	/** Width of the window content. */
-	private static final int PAGE_WIDTH = 450;
+	private static final int PAGE_WIDTH = 550;	//widened window width to fit new tab
 	/** Height of the window content. */
 	private static final int PAGE_HEIGHT = 300;
 	/** Width of the index area of a page. */
